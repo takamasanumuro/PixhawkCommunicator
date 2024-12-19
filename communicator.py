@@ -29,7 +29,6 @@ async def run():
 
 async def print_gps_info(drone):
     #Subscribe to telemetry position
-    drone.telemetry.position()
     async for position in drone.telemetry.position():
         print(f"Position: {position.latitude_deg} {position.longitude_deg} {position.relative_altitude_m}")
         #Send request to server
@@ -43,7 +42,6 @@ async def print_gps_info(drone):
             print(response.text)
         except:
             print("Error")
-
 
 async def print_battery(drone):
     async for battery in drone.telemetry.battery():
